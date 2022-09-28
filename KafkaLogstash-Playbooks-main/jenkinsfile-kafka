@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-        sh 'ansible-playbook -i hosts Elastic-Project/KafkaLogstash-Playbooks-main/kafka.yml'
+        sh 'ansible-playbook KafkaLogstash-Playbooks-main/kafka.yml'
 '
       }
     }
