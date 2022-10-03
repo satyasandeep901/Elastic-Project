@@ -9,8 +9,8 @@ Type=simple
 StandardOutput=null
 #Environment="KAFKA_HEAP_OPTS={{ kafka_java_heap }}"
 #Environment="LOG_DIR={{ kafka_log_dir }}"
-ExecStop={{ kafka_dir }}/bin/zookeeper-server-start.sh 
-ExecStop={{ kafka_dir }}/bin/kafka-server-stop.sh
+ExecStart={{ kafka_dir }}/bin/zookeeper-server-start.sh {{ kafka_dir }}/config/zookeeper.properties
+ExecStart={{ kafka_dir }}/bin/kafka-server-stop.sh
 #User={{ kafka_user }}
 #Group={{ kafka_group }}
 Restart=on-failure
