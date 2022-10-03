@@ -249,18 +249,18 @@
   tags:
     - kafka_service
 
-- name: Template ZooKeeper systemd service file
-  template:
-    src: zookeeper.service.j2
-    dest: "{{ zookeeper_unit_path }}"
-    group: "{{ kafka_group }}"
-    owner: "{{ kafka_user }}"
-    mode: 0644
-  notify:
-    - Restart zookeeper systemd
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > '6' or ansible_os_family == "Debian"
-  tags:
-    - zookeeper_service
+#- name: Template ZooKeeper systemd service file
+#  template:
+#    src: zookeeper.service.j2
+#    dest: "{{ zookeeper_unit_path }}"
+#    group: "{{ kafka_group }}"
+#    owner: "{{ kafka_user }}"
+#    mode: 0644
+#  notify:
+#    - Restart zookeeper systemd
+#  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > '6' or ansible_os_family == "Debian"
+#  tags:
+#    - zookeeper_service
 
 - name: Start the ZooKeeper service
   systemd:
