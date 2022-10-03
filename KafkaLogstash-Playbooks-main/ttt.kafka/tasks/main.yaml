@@ -252,7 +252,7 @@
 - name: Template ZooKeeper systemd service file
   template:
     src: zookeeper.service.j2
-    dest: "{{ zookeeper_unit_path }}"
+    dest: "{{ zookeeper }}"
     group: "{{ kafka_group }}"
     owner: "{{ kafka_user }}"
     mode: 0644
