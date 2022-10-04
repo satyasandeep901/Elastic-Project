@@ -239,7 +239,7 @@
 - name: Template kafka systemd service
   template:
     src: kafka.service.j2
-    dest: "{{ kafka }}"
+    dest: "{{ kafka_unit_pat }}"
     group: '{{ kafka_group }}'
     owner: '{{ kafka_user }}'
     mode: 0644
