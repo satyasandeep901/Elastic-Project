@@ -252,7 +252,7 @@
 - name: Template zookeeper systemd service file
   template:
     src: zookeeper.service.j2
-    dest: "{{ kafka_unit_path }}"
+    dest: "{{ zookeeper_unit_path }}"
     group: "{{ kafka_group }}"
     owner: "{{ kafka_user }}"
     mode: 0644
@@ -260,7 +260,7 @@
     - zookeeper_service
 
 - name: Start the ZooKeeper service
-  systemd:
+  ansible.builtin.systemd:
     name: zookeeper
     state: started
     enabled: yes
