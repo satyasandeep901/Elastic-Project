@@ -249,7 +249,7 @@
   tags:
     - kafka_service
 
-- name: Template ZooKeeper systemd service file
+- name: Template zookeeper systemd service file
   template:
     src: zookeeper.service.j2
     dest: "{{ zookeeper_unit_path }}"
