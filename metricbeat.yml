@@ -189,5 +189,5 @@ processors:
 
 
 output.kafka:
-  hosts: ["43.205.18.44:9092"]
+  hosts: ["3.110.50.175:9092"]
   topic: demo-topic
