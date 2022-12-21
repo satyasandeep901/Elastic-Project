@@ -1,3 +1,2 @@
 ---
-zookeeper_unit_path: /usr/lib/systemd/system/zookeeper.service
-kafka_unit_path: /usr/lib/systemd/system/kafka.service
+kafka_unit_path: /lib/systemd/system/kafka.service

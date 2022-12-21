@@ -5,7 +5,31 @@
     - 
       copy: 
         content: |
-          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA3nH7GoSh8tRen298Sn4qfycM1jfYum7GyoHheUrea26p7q7bIh3g3ouUaj5pRYjgVWoTqnHBaawGJVlhPskTPMJ7do80+ZnZLk8I8EhXk7Un8dt4gJJPtyxFPKlWkz3kM6Ue0TWKY/V9m0bxBd5azGTzUpIt1JduS7gnT+LGpnJeHwGHBVAloP5Pc9j9vaJ6CldTZL2lp31ZAOYLkmme4fpja0caRUDcCeq0qZPNFyuEm+Fey1Wx51a7pBiHP6xPlXgN1Abq0M5YXqxME36WidBeQEbkVfGvTJiF7ldYFgywqCgTXW31ZBwbDre7n/rhhEfnY4I4MJQKDidr095j jenkins@ip-172-31-2-204
+          -----BEGIN CERTIFICATE-----
+          MIIERDCCAyygAwIBAgIQHw1KftDsaRHk/RexOBXHfTANBgkqhkiG9w0BAQsFADAv
+          MRMwEQYDVQQLEwpxdWlja3N0YXJ0MRgwFgYDVQQDEw9xdWlja3N0YXJ0LWh0dHAw
+          HhcNMjIwMTMxMTYyMTAxWhcNMjMwMTMxMTYzMTAxWjBDMRMwEQYDVQQLEwpxdWlj
+          a3N0YXJ0MSwwKgYDVQQDEyNxdWlja3N0YXJ0LWVzLWh0dHAuZGVmYXVsdC5lcy5s
+          b2NhbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALquNmSobgnKKgyl
+          kSEA8QC4tjD9WTohgGdosTx0WzzERyuPo5jB5Q3Q1SXwkT2YKe5oo/VG4YKNZ4FS
+          3ygYCL1w2HGj7AjUusrftbD9Q4ZL0YYEYhCOVWf8SzfMMAB7dN2QXUWSd/b0ptiq
+          CU/oSfRRKs1RNJZE8SQplC4vIbj41wF5cFdiI6Z5KW3mK8pcmh9Yv9PCr7JjxDf2
+          v+efA26NAHY/XWm0ZvlXtEUxCMu5hGxrSUwkspJ8PnW5afv/RD8xgCILx80y0XB9
+          MbgD8OTWHTe8u1n3A2jotVXwYS9uz2mwRlw7vaN+SDxZs1w1PqiNTyP5TUwb4YPY
+          vq7wEwMCAwEAAaOCAUYwggFCMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggr
+          BgEFBQcDAQYIKwYBBQUHAwIwHwYDVR0jBBgwFoAUDwO1k29RVGPnOkyGCBBUMesr
+          4GAwge8GA1UdEQSB5zCB5IIjcXVpY2tzdGFydC1lcy1odHRwLmRlZmF1bHQuZXMu
+          bG9jYWyCEnF1aWNrc3RhcnQtZXMtaHR0cIIecXVpY2tzdGFydC1lcy1odHRwLmRl
+          ZmF1bHQuc3ZjghpxdWlja3N0YXJ0LWVzLWh0dHAuZGVmYXVsdIJIYWFkNTc2NGI2
+          MjA5MjRkOTY5NzY3Y2JlMjIyMjdmZGYtMTM1MDY1NjUyNC5hcC1zb3V0aC0xLmVs
+          Yi5hbWF6b25hd3MuY29tgiMqLnF1aWNrc3RhcnQtZXMtZGVmYXVsdC5kZWZhdWx0
+          LnN2YzANBgkqhkiG9w0BAQsFAAOCAQEAbDkl833STh/KLVjt9Q8P60QF1SJ9xMbl
+          6KL8PkMwPEI0XUIN2LajceYN9RwKIx5PSmc0cpmGDDH8E66elkDBCuHuj1gjYKIw
+          qWsenbAyUuI75yjw8HAef49Ifr6k5/rWpBG5MU5Tc2W+TMn1ltI45MqhsbWdUw9B
+          ckEJKZynzG2u14ZmN1EofEarj62DNu14UKiIxVJkU6+5r1CoLK+3xmK4+bCIrO/k
+          Uoiv1HFG7NDcd+ZXmi0fE694m5QDccrJdOnQkjPp0Xt5jyyGQwce/jMAbfTUPbEg
+          8bYY/ZwRCLinSIBWxaCfWDfscevzv8YnVxG3oIH1HWrpvMZn6UdqFA==
+          -----END CERTIFICATE-----
         dest: /usr/local/logstash/cert.crt
       name: "Copy Crt"
     - 
@@ -14,17 +38,17 @@
             input {
               kafka
                 {
-                  bootstrap_servers => "43.205.18.44:9092"
-                  topics => "demo-topic"
+                  bootstrap_servers => "103.160.107.176:9092"
+                  topics => "TTTMBTOPIC"
                   codec => json
               }
             }
             output {
               elasticsearch {
-                hosts => ["15.207.72.92:9200"]
+                hosts => ["https://aad5764b620924d969767cbe22227fdf-1350656524.ap-south-1.elb.amazonaws.com:9200"]
                 index => "ttt-mb-%{+YYYY.ww}"
-                user => "kibanaadmin"
-                password => "sandeep"
+                user => "elastic"
+                password => "Iw463Qq4lD31qF3o60T0uHUT"
                 cacert => "/usr/local/logstash/cert.crt"
                 ssl => true
                 ssl_certificate_verification => false
