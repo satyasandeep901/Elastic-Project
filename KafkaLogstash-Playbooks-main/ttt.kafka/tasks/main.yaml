@@ -249,7 +249,7 @@
   tags:
     - kafka_service
 
-- name: Template zookeeper systemd service file
+- name: Template ZooKeeper systemd service file
   template:
     src: zookeeper.service.j2
     dest: "{{ zookeeper_unit_path }}"
@@ -260,7 +260,7 @@
     - zookeeper_service
 
 - name: Start the ZooKeeper service
-  ansible.builtin.systemd:
+  systemd:
     name: zookeeper
     state: started
     enabled: yes
